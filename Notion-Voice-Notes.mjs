@@ -60,7 +60,7 @@ export default {
 		notion: {
 			type: "app",
 			app: "notion",
-			description: `⬆ Don\'t forget to connect your Notion account! Additionally, be sure to give Pipedream access to your Notes database, or to a page that contains it.\n\n## Overview\n\nThis workflow lets you create perfectly-transcribed and summarized notes from voice recordings.\n\nIt also creates useful lists from the transcript, including:\n\n* Main points\n* Action items\n* Follow-up questions\n* Potential rebuttals\n\n**Need help with this workflow? [Check out the full instructions and FAQ here.](https://thomasjfrank.com/how-to-transcribe-audio-to-text-with-chatgpt-and-notion/)**\n\n## Compatibility\n\nThis workflow will work with any Notion database.\n\n### Upgrade Your Notion Experience\n\nWhile this workflow will work with any Notion database, it\'s even better with a template.\n\nFor general productivity use, you\'ll love [Ultimate Brain](https://thomasjfrank.com/brain/) – my all-in-one second brain template for Notion. \n\nUltimate Brain brings tasks, notes, projects, and goals all into one tool. Naturally, it works very well with this workflow.\n\n**Are you a creator?** \n\nMy [Creator\'s Companion](https://thomasjfrank.com/creators-companion/) template includes a ton of features that will help you make better-performing content and optimize your production process. There\'s even a version that includes Ultimate Brain, so you can easily use this workflow to create notes whenever you have an idea for a new video or piece of content.\n\n## Instructions\n\n[Click here for the full instructions on setting up this workflow.](https://thomasjfrank.com/how-to-transcribe-audio-to-text-with-chatgpt-and-notion/)\n\n## More Resources\n\n**More automations you may find useful:**\n\n* [Create Tasks in Notion with Your Voice](https://thomasjfrank.com/notion-chatgpt-voice-tasks/)\n* [Notion to Google Calendar Sync](https://thomasjfrank.com/notion-google-calendar-sync/)\n\n**All My Notion Automations:**\n\n* [Notion Automations Hub](https://thomasjfrank.com/notion-automations/)\n\n**Want to get notified about updates to this workflow (and about new Notion templates, automations, and tutorials)?**\n\n* [Join my Notion Tips newsletter](https://thomasjfrank.com/fundamentals/#get-the-newsletter)\n\n## Support My Work\n\nThis workflow is **100% free** – and it gets updates and improvements! *When there's an update, you'll see an **update** button in the top-right corner of this step.*\n\nIf you want to support my work, the best way to do so is buying one of my premium Notion Templates:\n\n* [Ultimate Brain](https://thomasjfrank.com/brain/) – the ultimate second-brain template for Notion\n* [Creator\'s Companion](https://thomasjfrank.com/creators-companion/) – my advanced template for serious content creators looking to publish better content more frequently\n\nBeyond that, sharing this automation\'s YouTube tutorial online or with friends is also helpful!`,
+			description: `⬆ Don\'t forget to connect your Notion account! Additionally, be sure to give Pipedream access to your Notes database, or to a page that contains it.\n\n## Overview\n\nThis workflow lets you create perfectly-transcribed and summarized notes from voice recordings.\n\nIt also creates useful lists from the transcript, including:\n\n* Details of Accident\n* Details of Treatment\n* Previous Medical History\n* Potential rebuttals\n\n**Need help with this workflow? [Check out the full instructions and FAQ here.](https://thomasjfrank.com/how-to-transcribe-audio-to-text-with-chatgpt-and-notion/)**\n\n## Compatibility\n\nThis workflow will work with any Notion database.\n\n### Upgrade Your Notion Experience\n\nWhile this workflow will work with any Notion database, it\'s even better with a template.\n\nFor general productivity use, you\'ll love [Ultimate Brain](https://thomasjfrank.com/brain/) – my all-in-one second brain template for Notion. \n\nUltimate Brain brings tasks, notes, projects, and goals all into one tool. Naturally, it works very well with this workflow.\n\n**Are you a creator?** \n\nMy [Creator\'s Companion](https://thomasjfrank.com/creators-companion/) template includes a ton of features that will help you make better-performing content and optimize your production process. There\'s even a version that includes Ultimate Brain, so you can easily use this workflow to create notes whenever you have an idea for a new video or piece of content.\n\n## Instructions\n\n[Click here for the full instructions on setting up this workflow.](https://thomasjfrank.com/how-to-transcribe-audio-to-text-with-chatgpt-and-notion/)\n\n## More Resources\n\n**More automations you may find useful:**\n\n* [Create Tasks in Notion with Your Voice](https://thomasjfrank.com/notion-chatgpt-voice-tasks/)\n* [Notion to Google Calendar Sync](https://thomasjfrank.com/notion-google-calendar-sync/)\n\n**All My Notion Automations:**\n\n* [Notion Automations Hub](https://thomasjfrank.com/notion-automations/)\n\n**Want to get notified about updates to this workflow (and about new Notion templates, automations, and tutorials)?**\n\n* [Join my Notion Tips newsletter](https://thomasjfrank.com/fundamentals/#get-the-newsletter)\n\n## Support My Work\n\nThis workflow is **100% free** – and it gets updates and improvements! *When there's an update, you'll see an **update** button in the top-right corner of this step.*\n\nIf you want to support my work, the best way to do so is buying one of my premium Notion Templates:\n\n* [Ultimate Brain](https://thomasjfrank.com/brain/) – the ultimate second-brain template for Notion\n* [Creator\'s Companion](https://thomasjfrank.com/creators-companion/) – my advanced template for serious content creators looking to publish better content more frequently\n\nBeyond that, sharing this automation\'s YouTube tutorial online or with friends is also helpful!`,
 		},
 		openai: {
 			type: "app",
@@ -74,16 +74,16 @@ export default {
 			description: `Select the options you would like to include in your summary. You can select multiple options.\n\nYou can also de-select all options, which will cause the summary step to only run once in order to generate a title for your note.`,
 			options: [
 				"Summary",
-				"Main Points",
-				"Action Items",
-				"Follow-up Questions",
-				"Stories",
-				"References",
-				"Arguments",
-				"Related Topics",
+				"Details of Accident",
+				"Details of Treatment",
+				"Previous Medical History",
+				"Effect on Social Domestic Relationships and Work Life",
+				"Effect on Mental Health",
+				"Current Medication",
+				"Clinical Examination Findings",
 				"Sentiment",
 			],
-			default: ["Summary", "Main Points", "Action Items", "Follow-up Questions"],
+			default: ["Summary", "Details of Accident", "Details of Treatment", "Previous Medical History"],
 			optional: false,
 		},
 		databaseID: common.props.databaseID,
@@ -844,7 +844,7 @@ export default {
 				languagePrefix = ` You will write your summary in ${language.label} (ISO 639-1 code: "${language.value}").`;
 			}
 
-			prompt.base = `You are an assistant that summarizes voice notes, podcasts, lecture recordings, and other audio recordings that primarily involve human speech. You only write valid JSON.${
+			prompt.base = `You are an assistant that summarizes medical notes, podcasts, lecture recordings, and other audio recordings that primarily involve human speech. You only write valid JSON.${
 				languagePrefix ? languagePrefix : ""
 			}
 			
@@ -865,54 +865,54 @@ export default {
 					prompt.summary = `Key "summary" - create a summary that is roughly ${verbosity} of the length of the transcript.`;
 				}
 
-				if (this.summary_options.includes("Main Points")) {
+				if (this.summary_options.includes("Details of Accident")) {
 					const verbosity =
 						this.verbosity === "High"
 							? "10"
 							: this.verbosity === "Medium"
 							? "5"
 							: "3";
-					prompt.main_points = `Key "main_points" - add an array of the main points. Limit each item to 100 words, and limit the list to ${verbosity} items.`;
+					prompt.details_of_accident = `Key "details_of_accident" - add an array of the details of the accident and initial medical help outside hospital. Limit each item to 200 words, and limit the list to ${verbosity} items.`;
 				}
 
-				if (this.summary_options.includes("Action Items")) {
+				if (this.summary_options.includes("Details of Treatment")) {
 					const verbosity =
 						this.verbosity === "High" ? "5" : this.verbosity === "Medium" ? "3" : "2";
-					prompt.action_items = `Key "action_items:" - add an array of action items. Limit each item to 100 words, and limit the list to ${verbosity} items. The current date will be provided at the top of the transcript; use it to add ISO 601 dates in parentheses to action items that mention relative days (e.g. "tomorrow").`;
+					prompt.details_of_treatment = `Key "details_of_treatment:" - add an array of details of treatment following the accident. Limit each item to 200 words, and limit the list to ${verbosity} items. The current date will be provided at the top of the transcript; use it to add ISO 601 dates in parentheses to Details of Treatment that mention relative days (e.g. "tomorrow").`;
 				}
 
-				if (this.summary_options.includes("Follow-up Questions")) {
+				if (this.summary_options.includes("Previous Medical History")) {
 					const verbosity =
 						this.verbosity === "High" ? "5" : this.verbosity === "Medium" ? "3" : "2";
-					prompt.follow_up = `Key "follow_up:" - add an array of follow-up questions. Limit each item to 100 words, and limit the list to ${verbosity} items.`;
+					prompt.previous_medical_history = `Key "previous_medical_history:" - add an array of previous medical history of the claimant. Limit each item to 100 words, and limit the list to ${verbosity} items.`;
 				}
 
-				if (this.summary_options.includes("Stories")) {
+				if (this.summary_options.includes("Effect on Social Domestic Relationships and Work Life")) {
 					const verbosity =
 						this.verbosity === "High" ? "5" : this.verbosity === "Medium" ? "3" : "2";
-					prompt.stories = `Key "stories:" - add an array of an stories or examples found in the transcript. Limit each item to 200 words, and limit the list to ${verbosity} items.`;
+					prompt.effect_on_social_domestic_relationships_and_work_life = `Key "effect_on_social_domestic_relationships_and_work_life:" - add an array of an effect on social domestic relationships and work life found in the transcript. Limit each item to 200 words, and limit the list to ${verbosity} items.`;
 				}
 
-				if (this.summary_options.includes("References")) {
+				if (this.summary_options.includes("Effect on Mental Health")) {
 					const verbosity =
 						this.verbosity === "High" ? "5" : this.verbosity === "Medium" ? "3" : "2";
-					prompt.references = `Key "references:" - add an array of references made to external works or data found in the transcript. Limit each item to 100 words, and limit the list to ${verbosity} items.`;
+					prompt.effect_on_mental_health = `Key "effect_on_mental_health:" - add an array of the effect on mental health found in the transcript. Limit each item to 200 words, and limit the list to ${verbosity} items.`;
 				}
 
-				if (this.summary_options.includes("Arguments")) {
+				if (this.summary_options.includes("Current Medication")) {
 					const verbosity =
 						this.verbosity === "High" ? "5" : this.verbosity === "Medium" ? "3" : "2";
-					prompt.arguments = `Key "arguments:" - add an array of potential arguments against the transcript. Limit each item to 100 words, and limit the list to ${verbosity} items.`;
+					prompt.current_medication = `Key "current_medication:" - add an array of current medication found in the transcript. Limit each item to 100 words, and limit the list to ${verbosity} items.`;
 				}
 
-				if (this.summary_options.includes("Related Topics")) {
+				if (this.summary_options.includes("Clinical Examination Findings")) {
 					const verbosity =
 						this.verbosity === "High"
 							? "10"
 							: this.verbosity === "Medium"
 							? "5"
 							: "3";
-					prompt.related_topics = `Key "related_topics:" - add an array of topics related to the transcript. Limit each item to 100 words, and limit the list to ${verbosity} items.`;
+					prompt.clinical_examination_findings = `Key "clinical_examination_findings:" - add an array of clinical examination findings found in the transcript. Limit each item to 200 words, and limit the list to ${verbosity} items.`;
 				}
 
 				if (this.summary_options.includes("Sentiment")) {
@@ -936,32 +936,32 @@ export default {
 				exampleObject.summary = "A collection of buttons for Notion";
 			}
 
-			if ("main_points" in prompt) {
-				exampleObject.main_points = ["item 1", "item 2", "item 3"];
+			if ("details_of_accident" in prompt) {
+				exampleObject.details_of_accident = ["item 1", "item 2", "item 3"];
 			}
 
-			if ("action_items" in prompt) {
-				exampleObject.action_items = ["item 1", "item 2", "item 3"];
+			if ("details_of_treatment" in prompt) {
+				exampleObject.details_of_treatment = ["item 1", "item 2", "item 3"];
 			}
 
-			if ("follow_up" in prompt) {
-				exampleObject.follow_up = ["item 1", "item 2", "item 3"];
+			if ("previous_medical_history" in prompt) {
+				exampleObject.previous_medical_history = ["item 1", "item 2", "item 3"];
 			}
 
-			if ("stories" in prompt) {
-				exampleObject.stories = ["item 1", "item 2", "item 3"];
+			if ("effect_on_social_domestic_relationships_and_work_life" in prompt) {
+				exampleObject.effect_on_social_domestic_relationships_and_work_life = ["item 1", "item 2", "item 3"];
 			}
 
-			if ("references" in prompt) {
-				exampleObject.references = ["item 1", "item 2", "item 3"];
+			if ("effect_on_mental_health" in prompt) {
+				exampleObject.effect_on_mental_health = ["item 1", "item 2", "item 3"];
 			}
 
-			if ("arguments" in prompt) {
-				exampleObject.arguments = ["item 1", "item 2", "item 3"];
+			if ("current_medication" in prompt) {
+				exampleObject.current_medication = ["item 1", "item 2", "item 3"];
 			}
 
-			if ("related_topics" in prompt) {
-				exampleObject.related_topics = ["item 1", "item 2", "item 3"];
+			if ("clinical_examination_findings" in prompt) {
+				exampleObject.clinical_examination_findings = ["item 1", "item 2", "item 3"];
 			}
 
 			if ("sentiment" in prompt) {
@@ -1013,13 +1013,13 @@ export default {
 				if (!curr.choice) return acc;
 
 				acc.summary.push(curr.choice.summary || []);
-				acc.main_points.push(curr.choice.main_points || []);
-				acc.action_items.push(curr.choice.action_items || []);
-				acc.stories.push(curr.choice.stories || []);
-				acc.references.push(curr.choice.references || []);
-				acc.arguments.push(curr.choice.arguments || []);
-				acc.follow_up.push(curr.choice.follow_up || []);
-				acc.related_topics.push(curr.choice.related_topics || []);
+				acc.details_of_accident.push(curr.choice.details_of_accident || []);
+				acc.details_of_treatment.push(curr.choice.details_of_treatment || []);
+				acc.effect_on_social_domestic_relationships_and_work_life.push(curr.choice.effect_on_social_domestic_relationships_and_work_life || []);
+				acc.effect_on_mental_health.push(curr.choice.effect_on_mental_health || []);
+				acc.current_medication.push(curr.choice.current_medication || []);
+				acc.previous_medical_history.push(curr.choice.previous_medical_history || []);
+				acc.clinical_examination_findings.push(curr.choice.clinical_examination_findings || []);
 				acc.usageArray.push(curr.usage || 0);
 
 				return acc;
@@ -1027,13 +1027,13 @@ export default {
 				title: resultsArray[0]?.choice?.title,
 				sentiment: this.summary_options.includes("Sentiment") ? resultsArray[0]?.choice?.sentiment : undefined,
 				summary: [],
-				main_points: [],
-				action_items: [],
-				stories: [],
-				references: [],
-				arguments: [],
-				follow_up: [],
-				related_topics: [],
+				details_of_accident: [],
+				details_of_treatment: [],
+				effect_on_social_domestic_relationships_and_work_life: [],
+				effect_on_mental_health: [],
+				current_medication: [],
+				previous_medical_history: [],
+				clinical_examination_findings: [],
 				usageArray: [],
 			})
 
@@ -1049,17 +1049,17 @@ export default {
 				return sum;
 			}
 
-			console.log(`Filtering Related Topics, if any exist:`)
-			let filtered_related_topics = chatResponse.related_topics.flat().filter(
+			console.log(`Filtering Clinical Examination Findings, if any exist:`)
+			let filtered_clinical_examination_findings = chatResponse.clinical_examination_findings.flat().filter(
 				(item) => item !== undefined && item !== null && item !== ""
 			)
 
 			let filtered_related_set;
 
-			if (filtered_related_topics.length > 1) {
+			if (filtered_clinical_examination_findings.length > 1) {
 				filtered_related_set = Array.from(
 					new Set(
-						filtered_related_topics.map((item) => item.toLowerCase())
+						filtered_clinical_examination_findings.map((item) => item.toLowerCase())
 					)
 				)
 			}
@@ -1070,15 +1070,15 @@ export default {
 				...(this.summary_options.includes("Sentiment") && {
 					sentiment: chatResponse.sentiment,
 				}),
-				main_points: chatResponse.main_points.flat(),
-				action_items: chatResponse.action_items.flat(),
-				stories: chatResponse.stories.flat(),
-				references: chatResponse.references.flat(),
-				arguments: chatResponse.arguments.flat(),
-				follow_up: chatResponse.follow_up.flat(),
-				...(this.summary_options.includes("Related Topics") &&
+				details_of_accident: chatResponse.details_of_accident.flat(),
+				details_of_treatment: chatResponse.details_of_treatment.flat(),
+				effect_on_social_domestic_relationships_and_work_life: chatResponse.effect_on_social_domestic_relationships_and_work_life.flat(),
+				effect_on_mental_health: chatResponse.effect_on_mental_health.flat(),
+				current_medication: chatResponse.current_medication.flat(),
+				previous_medical_history: chatResponse.previous_medical_history.flat(),
+				...(this.summary_options.includes("Clinical Examination Findings") &&
 					filtered_related_set.length > 1 && {
-						related_topics: filtered_related_set.sort(),
+						clinical_examination_findings: filtered_related_set.sort(),
 					}),
 				tokens: arraySum(chatResponse.usageArray),
 			};
@@ -1458,14 +1458,14 @@ export default {
 
 				additionalInfoArray.push(infoHeader);
 
-				if (header === "Arguments and Areas for Improvement") {
+				if (header === "Current Medication") {
 					const argWarning = {
 						callout: {
 							rich_text: [
 								{
 									text: {
 										content:
-											"These are potential arguments and rebuttals that other people may bring up in response to the transcript. Like every other part of this summary document, factual accuracy is not guaranteed.",
+											"The current medication being taken by the claimant.",
 									},
 								},
 							],
@@ -1498,38 +1498,38 @@ export default {
 
 			const sections = [
 				{
-					arr: meta.main_points,
-					header: "Main Points",
+					arr: meta.details_of_accident,
+					header: "Details of Accident",
 					itemType: "bulleted_list_item",
 				},
 				{
-					arr: meta.stories,
-					header: "Stories and Examples",
+					arr: meta.effect_on_social_domestic_relationships_and_work_life,
+					header: "Effect on Social Domestic Relationships and Work Life",
 					itemType: "bulleted_list_item",
 				},
 				{
-					arr: meta.references,
-					header: "References and Citations",
+					arr: meta.effect_on_mental_health,
+					header: "Effect on Mental Health",
 					itemType: "bulleted_list_item",
 				},
 				{
-					arr: meta.action_items,
-					header: "Potential Action Items",
+					arr: meta.details_of_treatment,
+					header: "Potential Details of Treatment",
 					itemType: "to_do",
 				},
 				{
-					arr: meta.follow_up,
-					header: "Follow-Up Questions",
+					arr: meta.previous_medical_history,
+					header: "Previous Medical History",
 					itemType: "bulleted_list_item",
 				},
 				{
-					arr: meta.arguments,
-					header: "Arguments and Areas for Improvement",
+					arr: meta.current_medication,
+					header: "Current Medication",
 					itemType: "bulleted_list_item",
 				},
 				{
-					arr: meta.related_topics,
-					header: "Related Topics",
+					arr: meta.clinical_examination_findings,
+					header: "Clinical Examination Findings",
 					itemType: "bulleted_list_item",
 				},
 			];
